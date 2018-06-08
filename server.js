@@ -9,14 +9,14 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 
-//Body parser middleware
+// Body parser middleware
 app.use(bodyParser.urlencoded({extend: false}));
 app.use(bodyParser.json());
 
-//DB Config
+// DB Config
 const db = require('./config/keys').mongoURI;
 
-//Connect to MongoDB
+// Connect to MongoDB
 mongoose
     .connect(db)
     .then(() => console.log('MongoDB connected'))
@@ -28,7 +28,7 @@ app.use(passport.initialize());
 // Passport Config
 require('./config/passport')(passport);
 
-//Usr Routes
+// User Routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
